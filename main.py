@@ -20,7 +20,7 @@ def get_json_data_from_file(filename):
         json_data = json.loads(lstrip_bom(file.read()))
     return json_data
 
-def validate_json(json_data, schema_file='schema.json'):
+def validate_json(json_data, schema_file='data/schema.json'):
     """Test json data against the schema"""
     execute_api_schema = get_json_data_from_file(schema_file)
 
@@ -39,7 +39,7 @@ def detect_encoding(filename):
         return encoding
 
 
-stripped_json_data = get_json_data_from_file('compounds.json')
+stripped_json_data = get_json_data_from_file('data/compounds.json')
 
 print(validate_json(stripped_json_data))
 
