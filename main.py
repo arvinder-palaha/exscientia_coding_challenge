@@ -45,12 +45,22 @@ print(validate_json(stripped_json_data))
 
 mol_weights = []
 ALogP = []
+num_rings = []
 
 for compound in stripped_json_data:
     mol_weights.append(compound['molecular_weight'])
     ALogP.append(compound['ALogP'])
+    num_rings.append(compound['num_rings'])
+
+# print(num_rings)
+area = [n*2 for n in num_rings]
+
 
 fig, ax = plt.subplots()
-ax.scatter(mol_weights, ALogP, )
+ax.scatter(mol_weights, ALogP, s=area, c=num_rings)
+ax.set_title('molecular weight Vs ALogP')
+ax.set_xlabel('molecular weight')
+ax.set_ylabel('ALogP')
+ax.grid()
 plt.show()
 
