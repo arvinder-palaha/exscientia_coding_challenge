@@ -1,8 +1,6 @@
 import json
 from jsonschema import validate
-import chardet
 from codecs import BOM_UTF8
-import codecs
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,22 +30,16 @@ def validate_json(json_data, schema_file='data/schema.json'):
     
     return True, "JSON data is valid"
 
-def detect_encoding(filename):
-    """Estimate encoding using chardet"""
-    with open(filename, 'rb') as file:
-        encoding = chardet.detect(file.read())['encoding']
-        return encoding
 
+json_data = get_json_data_from_file('data/compounds.json')
 
-stripped_json_data = get_json_data_from_file('data/compounds.json')
-
-print(validate_json(stripped_json_data))
+print(validate_json(json_data))
 
 mol_weights = []
 ALogP = []
 num_rings = []
 
-for compound in stripped_json_data:
+for compound in json_data:
     mol_weights.append(compound['molecular_weight'])
     ALogP.append(compound['ALogP'])
     num_rings.append(compound['num_rings'])
