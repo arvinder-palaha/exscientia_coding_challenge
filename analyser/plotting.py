@@ -11,6 +11,7 @@ def scatter(x, y, z=None, showplot=False, saveto=None):
     scale_z = 10
     
     if z is not None:
+        assert len(z) == len(x)
         d_color = z
         d_area = [scale_z*zn for zn in z]
     else:

@@ -8,3 +8,10 @@ def test_given_x_y_unequal_throw_exception():
         y = [0, 1, 2, 3]
         scatter(x, y)
 
+def test_given_x_y_z_unequal_throw_exception():
+    with pytest.raises(AssertionError) as err:
+        x = [0, 1, 2, 3, 4, 5]
+        z = [1, 2]
+        scatter(x, x, z=z)
+
+
