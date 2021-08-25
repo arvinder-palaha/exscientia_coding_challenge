@@ -3,13 +3,10 @@ import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 import matplotlib.colors as mcolors
 from matplotlib import cm
-import numpy as np
 
-from analyser.data_importer import *
+from analyser.data_importer import import_json
 
-json_data = get_json_data_from_file('data/compounds.json')
-
-print(validate_json(json_data))  # TODO this should be done in data_importer
+json_data = import_json(json_file='data/compounds.json',schema_file='data/schema.json')
 
 mol_weights = []
 ALogP = []
