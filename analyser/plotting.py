@@ -3,3 +3,6 @@ import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 import matplotlib.colors as mcolors
 from matplotlib import cm
+
+def summ(a, b):
+    return a + b
