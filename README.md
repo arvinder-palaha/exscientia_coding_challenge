@@ -1,3 +1,3 @@
-exscientia code challenge
+Exscientia Code Challenge
 by Arvinder Palaha
 
