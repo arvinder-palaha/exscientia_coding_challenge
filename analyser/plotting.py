@@ -4,9 +4,6 @@ import matplotlib.lines as mlines
 import matplotlib.colors as mcolors
 from matplotlib import cm
 
-def summ(a, b):
-    return a + b
-
 def scatter(x, y, z=None, showplot=False, saveto=None):
     """create scatter plot"""
     assert len(x) == len(y)
@@ -22,7 +19,7 @@ def scatter(x, y, z=None, showplot=False, saveto=None):
     
     fig, ax = plt.subplots()
     ax.scatter(x, y, s=d_area, c=d_color, alpha=0.5)
-    
+
     if showplot:
         plt.show()
     if saveto is not None:
