@@ -7,15 +7,22 @@ import codecs
 import matplotlib.pyplot as plt
 import numpy as np
 
-def get_schema():
-    """Load a schema"""
-    with open('schema.json', 'r') as file:
-        schema = json.load(file)
-    return schema
+def lstrip_bom(str_, bom=BOM_UTF8):
+    """remove the beginning encoding chars
+    if necessary"""
+    if str_.startswith(bom):
+        return str_[len(bom):]
+    else:
+        return str_
 
-def validate_json(json_data):
+def get_json_data_from_file(filename):
+    with open(filename, 'rb') as file:
+        json_data = json.loads(lstrip_bom(file.read()))
+    return json_data
+
+def validate_json(json_data, schema_file='schema.json'):
     """Test json data against the schema"""
-    execute_api_schema = get_schema()
+    execute_api_schema = get_json_data_from_file(schema_file)
 
     try:
         validate(instance=json_data, schema=execute_api_schema)
@@ -31,27 +38,10 @@ def detect_encoding(filename):
         encoding = chardet.detect(file.read())['encoding']
         return encoding
 
-def lstrip_bom(str_, bom=BOM_UTF8):
-    """remove the beginning encoding chars
-    if necessary"""
-    if str_.startswith(bom):
-        return str_[len(bom):]
-    else:
-        return str_
-
-def get_json_data_from_file(filename):
-    with open(filename, 'rb') as file:
-        json_data = json.loads(lstrip_bom(file.read()))
-    return json_data
-
-# print(detect_encoding('schema.json'))
-# print(detect_encoding('compounds.json'))
 
 stripped_json_data = get_json_data_from_file('compounds.json')
 
 print(validate_json(stripped_json_data))
-
-print(stripped_json_data[0]['molecular_weight'])
 
 mol_weights = []
 ALogP = []
