@@ -50,8 +50,6 @@ for compound in stripped_json_data:
     mol_weights.append(compound['molecular_weight'])
     ALogP.append(compound['ALogP'])
 
-print(mol_weights,ALogP)
-
 fig, ax = plt.subplots()
 ax.scatter(mol_weights, ALogP, )
 plt.show()
