@@ -41,13 +41,11 @@ def get_json_data_from_file(filename):
         json_data = json.loads(lstrip_bom(file.read()))
     return json_data
 
-json_data = json.load(codecs.open('compounds.json', 'r', 'UTF-8-SIG'))
-print(json_data[0])
-print(codecs.BOM_UTF8)
+# print(detect_encoding('schema.json'))
+# print(detect_encoding('compounds.json'))
 
 stripped_json_data = get_json_data_from_file('compounds.json')
 
 print(validate_json(stripped_json_data))
 
-msg = "Hello world"
-print(msg)
+
