@@ -1,43 +1,15 @@
-import json
-from jsonschema import validate
-from codecs import BOM_UTF8
 from matplotlib.markers import MarkerStyle
-
 import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 import matplotlib.colors as mcolors
 from matplotlib import cm
 import numpy as np
 
-def lstrip_bom(str_, bom=BOM_UTF8):
-    """remove the beginning encoding chars
-    if necessary"""
-    if str_.startswith(bom):
-        return str_[len(bom):]
-    else:
-        return str_
-
-def get_json_data_from_file(filename):
-    with open(filename, 'rb') as file:
-        json_data = json.loads(lstrip_bom(file.read()))
-    return json_data
-
-def validate_json(json_data, schema_file='data/schema.json'):
-    """Test json data against the schema"""
-    execute_api_schema = get_json_data_from_file(schema_file)
-
-    try:
-        validate(instance=json_data, schema=execute_api_schema)
-    except Exception as err:
-        print(err)
-        return False, err
-    
-    return True, "JSON data is valid"
-
+from analyser.data_importer import *
 
 json_data = get_json_data_from_file('data/compounds.json')
 
-print(validate_json(json_data))
+print(validate_json(json_data))  # TODO this should be done in data_importer
 
 mol_weights = []
 ALogP = []
