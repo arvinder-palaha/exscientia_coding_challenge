@@ -9,6 +9,7 @@ def _lstrip_bom(str_, bom=BOM_UTF8):
     else:
         return str_
 
+# TODO there must be a better way of handling different encodings!
 def _get_json_data_from_file(filename):
     with open(filename, 'rb') as file:
         json_data = json.loads(_lstrip_bom(file.read()))
