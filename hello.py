@@ -19,11 +19,14 @@ def validate_json(json_data):
     
     return True, "JSON data is valid"
 
-with open('compounds.json','r') as file:
-    json_data = file.read()
-    result, msg = validate_json(json_data)
-    print(result, msg)
+def detect_encoding(filename):
+    with open(filename, 'rb') as file:
+        encoding = chardet.detect(file.read())['encoding']
+        return encoding
 
+
+print(detect_encoding('schema.json'))
+print(detect_encoding('compounds.json'))
 
 
 msg = "Hello world"
