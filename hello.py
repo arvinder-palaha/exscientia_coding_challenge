@@ -23,25 +23,29 @@ def validate_json(json_data):
     return True, "JSON data is valid"
 
 def detect_encoding(filename):
+    """Estimate encoding using chardet"""
     with open(filename, 'rb') as file:
         encoding = chardet.detect(file.read())['encoding']
         return encoding
 
 def lstrip_bom(str_, bom=BOM_UTF8):
+    """remove the beginning encoding chars
+    if necessary"""
     if str_.startswith(bom):
         return str_[len(bom):]
     else:
         return str_
 
-print(detect_encoding('schema.json'))
-print(detect_encoding('compounds.json'))
+def get_json_data_from_file(filename):
+    with open(filename, 'rb') as file:
+        json_data = json.loads(lstrip_bom(file.read()))
+    return json_data
 
 json_data = json.load(codecs.open('compounds.json', 'r', 'UTF-8-SIG'))
 print(json_data[0])
 print(codecs.BOM_UTF8)
 
-stripped_json_data = json.loads(lstrip_bom(open('compounds.json','rb').read()))
-# print(stripped_json_data[0])
+stripped_json_data = get_json_data_from_file('compounds.json')
 
 print(validate_json(stripped_json_data))
 
