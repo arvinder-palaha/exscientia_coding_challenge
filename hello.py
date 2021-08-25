@@ -4,6 +4,9 @@ import chardet
 from codecs import BOM_UTF8
 import codecs
 
+import matplotlib.pyplot as plt
+import numpy as np
+
 def get_schema():
     """Load a schema"""
     with open('schema.json', 'r') as file:
@@ -48,4 +51,18 @@ stripped_json_data = get_json_data_from_file('compounds.json')
 
 print(validate_json(stripped_json_data))
 
+print(stripped_json_data[0]['molecular_weight'])
+
+mol_weights = []
+ALogP = []
+
+for compound in stripped_json_data:
+    mol_weights.append(compound['molecular_weight'])
+    ALogP.append(compound['ALogP'])
+
+print(mol_weights,ALogP)
+
+fig, ax = plt.subplots()
+ax.scatter(mol_weights, ALogP, )
+plt.show()
 
