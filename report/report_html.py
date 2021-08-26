@@ -30,8 +30,10 @@ class table_html:
     
     def _generate_image_link(self, image_name):
         # TODO create thumbnail images rather than scaling the original
-        link = '<img src="{}" alt="compound diagram" width="50" height="50"'
-        return link.format(image_name)
+        link =  '<a href={}>\n'.format(image_name)
+        link += '<img src="{}" alt="compound diagram" width="50" height="50"/>\n'.format(image_name)
+        link += '</a>'
+        return link
 
     def populate(self, data_list, preferred_id_field=0):
         for data in data_list:
