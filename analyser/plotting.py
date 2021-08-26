@@ -4,7 +4,7 @@ import matplotlib.lines as mlines
 import matplotlib.colors as mcolors
 from matplotlib import cm
 
-def scatter_plot(x, y, z=None, showplot=False, title=None, xlabel=None, ylabel=None, legend_title=None):
+def scatter_plot(x, y, z=None, title=None, xlabel=None, ylabel=None, legend_title=None):
     """create scatter plot"""
     assert len(x) == len(y)
 
@@ -43,5 +43,4 @@ def scatter_plot(x, y, z=None, showplot=False, title=None, xlabel=None, ylabel=N
             legend_title_str = legend_title
         ax.legend(handles=legend_markers, title=legend_title_str)
 
-    if showplot:
         plt.show(block=True)
