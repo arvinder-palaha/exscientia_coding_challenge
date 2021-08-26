@@ -14,11 +14,11 @@ class table_html:
             s_name = str(property)
             s_type = str(prop_dict['type'])
             self.headers.append([s_name, s_type])
+        self.table.field_names = [name for name in self.headers]
     
-    # def
-
-
-
+    def get_string(self):
+        return self.table.get_string()
+    
 # god function
 def generate_html_report():
     """Created a tabulated report of the json data file
