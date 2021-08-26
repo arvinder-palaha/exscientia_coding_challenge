@@ -8,8 +8,7 @@ import sys
 parser = argparse.ArgumentParser()
 parser.add_argument('json_file', type=str)
 parser.add_argument('schema_file', type=str)
-parser.add_argument('--plot', action="store_true", help='plot molecular weight vs ALogP')
-parser.add_argument('--report', action="store_true", help='create report of compounds results as build/index.html')
+parser.add_argument('mode', help='plot or report', nargs='?', choices=('plot', 'report'))
 arguments = parser.parse_args()
 
 if not os.path.exists(arguments.json_file):
@@ -23,7 +22,7 @@ if not os.path.exists(arguments.schema_file):
 json_data = import_json(json_file=arguments.json_file,schema_file=arguments.schema_file)
 print("json data validated against schema")
 
-if arguments.plot:
+if arguments.mode == 'plot':
     mol_weights = []
     ALogP = []
     num_rings = []
@@ -39,7 +38,7 @@ if arguments.plot:
         ylabel='ALogP',
         legend_title='number of rings')
 
-if arguments.report:
+if arguments.mode == 'report':
     schema = _get_json_data_from_file(arguments.schema_file)
     generate_html_report(json_data, schema, image_dir='data/images')
     print('html report generated in build/report.html')
