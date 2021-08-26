@@ -16,14 +16,23 @@ class table_html:
             self.headers.append([s_name, s_type])
         self.table.field_names = [name[0] for name in self.headers]
 
-    def populate(self, data_list):
+    def _generate_link(self, id):
+        link = '<a href="{}.html">assay results</a>'
+        return link.format(id)
+
+    def populate(self, data_list, preferred_id_field=0):
         for data in data_list:
             row_to_add = []
+            id_for_link = data[self.headers[0][0]]
+            print(id_for_link)
             for head in self.headers:
                 if head[1] != 'array':
                     row_to_add.append(data[head[0]])
-                else:
-                    row_to_add.append("link")
+                else: # if array
+                    if head[0] == 'assay_results':
+                        row_to_add.append(self._generate_link(id_for_link))
+                    else:
+                        row_to_add.append(str(len(data[head[0]])))
             self.table.add_row(row_to_add)
 
     def get_string(self):
