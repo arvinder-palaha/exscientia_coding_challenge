@@ -32,8 +32,11 @@ if arguments.mode == 'plot':
         ALogP.append(compound['ALogP'])
         num_rings.append(compound['num_rings'])
 
-    scatter_plot(mol_weights, ALogP, num_rings, showplot=True, 
-        title="Molecular Weight vs ALogP",
+    plot_title = 'Molecular Weight vs ALogP'
+    print('Plot of {} will be shown, close plot window to exit program'.format(plot_title))
+
+    scatter_plot(mol_weights, ALogP, num_rings, 
+        title=plot_title,
         xlabel='molecular weight',
         ylabel='ALogP',
         legend_title='number of rings')
