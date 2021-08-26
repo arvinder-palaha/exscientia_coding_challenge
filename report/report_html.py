@@ -1,14 +1,18 @@
 from prettytable import PrettyTable
 
-def _column_headers(schema):
-    headers = []
-    properties = schema['properties']
-    for property in properties:
-        prop_dict = properties[property]
-        s_name = str(property)
-        s_type = str(prop_dict['type'])
-        headers.append([s_name, s_type])
-    return headers
+class report_html:
+    def __init__(self):
+        self.table = PrettyTable()
+        self.headers = []
+
+    def _column_headers(self, schema):
+        properties = schema['properties']
+        for property in properties:
+            prop_dict = properties[property]
+            s_name = str(property)
+            s_type = str(prop_dict['type'])
+            self.headers.append([s_name, s_type])
+
 
 
 # god function
