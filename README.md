@@ -9,19 +9,22 @@ pipenv
 python 3.9
 
 ## Setup instructions
-run `pipenv install`
+run:
+
+`pipenv install`
 
 ## To see all the options
-run `pipenv run python main.py --help`
+run:
+
+ `pipenv run python main.py --help`
 
 ## How to use
-To create a plot of molecular weight vs ALogP:
+To create a plot of molecular weight vs ALogP, run:
 
-run `pipenv run python main.py data/compounds.json data/schema.json plot`
+`pipenv run python main.py data/compounds.json data/schema.json plot`
 
+To generate a html table of the compounds, with links to the assay_results, run:
 
-To generate a html table of the compounds, with links to the assay_results:
-
-run `pipenv run python main.py data/compounds.json data/schema.json report`
+`pipenv run python main.py data/compounds.json data/schema.json report`
 
 
