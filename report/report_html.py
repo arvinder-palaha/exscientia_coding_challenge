@@ -29,6 +29,7 @@ class table_html:
         return link.format(id)
     
     def _generate_image_link(self, image_name):
+        # TODO create thumbnail images rather than scaling the original
         link = '<img src="{}" alt="compound diagram" width="50" height="50"'
         return link.format(image_name)
 
