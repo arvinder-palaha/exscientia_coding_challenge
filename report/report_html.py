@@ -1,6 +1,6 @@
 from prettytable import PrettyTable
 
-class report_html:
+class table_html:
     def __init__(self):
         self.table = PrettyTable()
         self.headers = []
@@ -12,6 +12,8 @@ class report_html:
             s_name = str(property)
             s_type = str(prop_dict['type'])
             self.headers.append([s_name, s_type])
+    
+    # def
 
 
 
