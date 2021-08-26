@@ -28,12 +28,12 @@ def exp_empty_table_str():
 
 @pytest.fixture
 def exp_filled_table():
-    string =  '+-------------+----------------------------------------------------------+------------------------------------------+\n'
-    string += '| compound_id |                          smiles                          |              assay_results               |\n'
-    string += '+-------------+----------------------------------------------------------+------------------------------------------+\n'
-    string += '|   1117973   |  Cc1nnc2[C@H](NC(=O)OCc3ccccc3)N=C(c4ccccc4)c5ccccc5n12  | <a href="1117973.html">assay results</a> |\n'
-    string += '|    694811   | CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14 | <a href="694811.html">assay results</a>  |\n'
-    string += '+-------------+----------------------------------------------------------+------------------------------------------+'
+    string =  '+-------------+----------------------------------------------------------+--------------------------------------------------+\n'
+    string += '| compound_id |                          smiles                          |                  assay_results                   |\n'
+    string += '+-------------+----------------------------------------------------------+--------------------------------------------------+\n'
+    string += '|   1117973   |  Cc1nnc2[C@H](NC(=O)OCc3ccccc3)N=C(c4ccccc4)c5ccccc5n12  | <a href="results/1117973.html">assay results</a> |\n'
+    string += '|    694811   | CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14 | <a href="results/694811.html">assay results</a>  |\n'
+    string += '+-------------+----------------------------------------------------------+--------------------------------------------------+'
     return string
 
 def test_get_headers_from_schema_json(test_schema, exp_main_headers):
@@ -60,7 +60,8 @@ def test_create_filled_headed_table(test_schema, test_compounds, exp_filled_tabl
 
 def test_generate_link_to_results_html():
     test_table = table_html()
-    exp_link = '<a href="1234.html">assay results</a>'
+    exp_link = '<a href="results/1234.html">assay results</a>'
+    # print(test_table._generate_link(1234))
     assert test_table._generate_link(1234) == exp_link
 
 
