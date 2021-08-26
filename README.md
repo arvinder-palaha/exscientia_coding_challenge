@@ -5,6 +5,7 @@ by Arvinder Palaha
 
 ## Requirements
 pipenv
+python 3.9
 
 ## How to run
 run 'pipenv install'
