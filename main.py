@@ -42,5 +42,5 @@ if arguments.plot:
 if arguments.report:
     schema = _get_json_data_from_file(arguments.schema_file)
     generate_html_report(json_data, schema, image_dir='data/images')
-    print('html report generated')
+    print('html report generated in build/report.html')
 
