@@ -76,7 +76,7 @@ def generate_html_report(json_data, schema, image_dir=None):
         os.mkdir('build')
 
     # write table html to file
-    with open('build/index.html', 'w') as f:
+    with open('build/report.html', 'w') as f:
         f.write(toptab.get_html())
 
     # if image_dir specified, copy to build dir
