@@ -25,9 +25,10 @@ def test_get_headers_from_schema_json(test_schema, exp_main_headers):
     table_headers = test_table.headers
     assert table_headers == exp_main_headers
 
-# def test_use_schema_as_argument(test_schema):
-#     test_table = table_html(test_schema)
-#     assert True
+def test_use_schema_as_argument(test_schema, exp_main_headers):
+    test_table = table_html(test_schema)
+    assert test_table.headers == exp_main_headers
+    
 
 # def test_create_empty_table_with_headers(test_schema):
 #     test_table = report_html()
