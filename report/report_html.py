@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 import html
+import shutil
 import os
 
 class table_html:
@@ -23,21 +24,33 @@ class table_html:
             self.headers.append([s_name, s_type])
         self.table.field_names = [name[0] for name in self.headers]
 
-    def _generate_link(self, id):
-
+    def _generate_result_link(self, id):
         link = '<a href="results/{}.html">assay results</a>'
         return link.format(id)
+    
+    def _generate_image_link(self, image_name):
+        link = '<img src="{}" alt="compound diagram" width="50" height="50"'
+        return link.format(image_name)
 
     def populate(self, data_list, preferred_id_field=0):
         for data in data_list:
             row_to_add = []
-            id_for_link = data[self.headers[0][0]]
+
+            # defaults to using compound_id if link required for assay_results
+            id_for_link = data[self.headers[preferred_id_field][0]]
+            
+            # for each compound, check for elements to do something with
             for head in self.headers:
                 if head[1] != 'array':
-                    row_to_add.append(data[head[0]])
+                    if head[0] == 'image':
+                        # row_to_add.append(data[head[0]])
+                        row_to_add.append(self._generate_image_link(data[head[0]]))
+                    else:
+                        row_to_add.append(data[head[0]])
                 else: # if array
                     if head[0] == 'assay_results':
-                        row_to_add.append(self._generate_link(id_for_link))
+                        row_to_add.append(self._generate_result_link(id_for_link))
+                    # what if array but not of assay_results?
                     else:
                         row_to_add.append(str(len(data[head[0]])))
             self.table.add_row(row_to_add)
@@ -55,8 +68,6 @@ def generate_html_report(json_data, schema, image_dir=None):
 
     # main pass/table
     toptab = table_html(schema, image_dir=image_dir)
-    toptab.table.border = True
-    toptab.table.format = True
     toptab.populate(json_data)
 
     # create build dir if doesn't exist already
@@ -67,11 +78,17 @@ def generate_html_report(json_data, schema, image_dir=None):
     with open('build/index.html', 'w') as f:
         f.write(toptab.get_html())
 
+    # if image_dir specified, copy to build dir
+    if image_dir is not None:
+        shutil.copytree(image_dir, 'build/images', dirs_exist_ok=True)
+
     # if any arrays found in header...
     for header in toptab.headers:
         if header[0] == 'assay_results':
+
             if not os.path.isdir('build/results'):
                 os.mkdir('build/results')
+
             # loop pass for each set of results
             for compound in json_data:
                 res_schema = schema['properties'][header[0]]
@@ -79,6 +96,7 @@ def generate_html_report(json_data, schema, image_dir=None):
                 results_tab = table_html(res_schema)
                 results_tab.populate(res_data)
                 c_id = compound['compound_id']
+
                 with open('build/results/{}.html'.format(c_id), 'w') as f:
                     f.write(results_tab.get_html())
 

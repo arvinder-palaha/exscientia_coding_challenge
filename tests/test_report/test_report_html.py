@@ -61,7 +61,7 @@ def test_create_filled_headed_table(test_schema, test_compounds, exp_filled_tabl
 def test_generate_link_to_results_html():
     test_table = table_html()
     exp_link = '<a href="results/1234.html">assay results</a>'
-    # print(test_table._generate_link(1234))
-    assert test_table._generate_link(1234) == exp_link
+    # print(test_table._generate_result_link(1234))
+    assert test_table._generate_result_link(1234) == exp_link
 
 
