@@ -1,9 +1,11 @@
 from prettytable import PrettyTable
 
 class table_html:
-    def __init__(self):
+    def __init__(self, schema=None):
         self.table = PrettyTable()
         self.headers = []
+        if schema is not None:
+            self._column_headers(schema)
 
     def _column_headers(self, schema):
         properties = schema['properties']
