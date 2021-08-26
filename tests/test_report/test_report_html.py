@@ -20,20 +20,20 @@ def exp_main_headers():
 
 @pytest.fixture
 def exp_empty_table_str():
-    string =  "+-------------+--------+---------------+\n"
-    string += "| compound_id | smiles | assay_results |\n"
-    string += "+-------------+--------+---------------+\n"
-    string += "+-------------+--------+---------------+"
+    string =  '+-------------+--------+---------------+\n'
+    string += '| compound_id | smiles | assay_results |\n'
+    string += '+-------------+--------+---------------+\n'
+    string += '+-------------+--------+---------------+'
     return string
 
 @pytest.fixture
 def exp_filled_table():
-    string =  "+-------------+----------------------------------------------------------+---------------+\n"
-    string += "| compound_id |                          smiles                          | assay_results |\n"
-    string += "+-------------+----------------------------------------------------------+---------------+\n"
-    string += "|   1117973   |  Cc1nnc2[C@H](NC(=O)OCc3ccccc3)N=C(c4ccccc4)c5ccccc5n12  |      link     |\n"
-    string += "|    694811   | CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14 |      link     |\n"
-    string += "+-------------+----------------------------------------------------------+---------------+"
+    string =  '+-------------+----------------------------------------------------------+------------------------------------------+\n'
+    string += '| compound_id |                          smiles                          |              assay_results               |\n'
+    string += '+-------------+----------------------------------------------------------+------------------------------------------+\n'
+    string += '|   1117973   |  Cc1nnc2[C@H](NC(=O)OCc3ccccc3)N=C(c4ccccc4)c5ccccc5n12  | <a href="1117973.html">assay results</a> |\n'
+    string += '|    694811   | CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14 | <a href="694811.html">assay results</a>  |\n'
+    string += '+-------------+----------------------------------------------------------+------------------------------------------+'
     return string
 
 def test_get_headers_from_schema_json(test_schema, exp_main_headers):
@@ -55,5 +55,12 @@ def test_create_filled_headed_table(test_schema, test_compounds, exp_filled_tabl
     test_table = table_html(test_schema)
     test_table.populate(test_compounds)
     print(test_table.get_string())
+    # assert False == True
     assert test_table.get_string() == exp_filled_table
+
+def test_generate_link_to_results_html():
+    test_table = table_html()
+    exp_link = '<a href="1234.html">assay results</a>'
+    assert test_table._generate_link(1234) == exp_link
+
 
