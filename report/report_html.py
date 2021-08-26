@@ -77,7 +77,9 @@ def generate_html_report(json_data, schema, image_dir=None):
 
     # write table html to file
     with open('build/report.html', 'w') as f:
+        f.write('<html>\n\t<body>\n')
         f.write(toptab.get_html())
+        f.write('\n\t</body>\n</html>')
 
     # if image_dir specified, copy to build dir
     if image_dir is not None:
@@ -99,7 +101,7 @@ def generate_html_report(json_data, schema, image_dir=None):
                 c_id = compound['compound_id']
 
                 with open('build/results/{}.html'.format(c_id), 'w') as f:
+                    f.write('<html>\n\t<body>\n')
                     f.write(results_tab.get_html())
-
-
-    
+                    f.write('\n\t</body>\n</html>')
+   
