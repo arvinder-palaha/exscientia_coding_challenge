@@ -8,11 +8,13 @@ pipenv
 
 python 3.9
 
-## How to run
+## Setup instructions
 run 'pipenv install'
 
+## To see all the options
 run 'pipenv run python main.py --help'
 
+## How to use
 To create a plot of molecular weight vs ALogP:
 
 run 'pipenv run python main.py data/compounds.json data/schema.json plot'
