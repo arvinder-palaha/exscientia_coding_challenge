@@ -1,0 +1,189 @@
+[{
+    "compound_id": 1117973,
+    "smiles": "Cc1nnc2[C@H](NC(=O)OCc3ccccc3)N=C(c4ccccc4)c5ccccc5n12",
+    "molecular_weight": 423.46654,
+    "ALogP": 4.686,
+    "molecular_formula": "C25H21N5O2",
+    "num_rings": 5,
+    "image": "images/1117973.png",
+    "assay_results": [{
+            "result_id": 8046397,
+            "target": "Bromodomain-containing protein 4",
+            "result": "IC50",
+            "operator": "=",
+            "value": 15.5,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161673,
+            "target": "Bromodomain-containing protein 4",
+            "result": "IC50",
+            "operator": "=",
+            "value": 140,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8056056,
+            "target": "Bromodomain-containing protein 4",
+            "result": "Kd",
+            "operator": "=",
+            "value": 19,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161626,
+            "target": "Bromodomain-containing protein 4",
+            "result": "Kd",
+            "operator": "=",
+            "value": 24,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046406,
+            "target": "Bromodomain-containing protein 4",
+            "result": "Kd",
+            "operator": "=",
+            "value": 52.5,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046396,
+            "target": "Bromodomain-containing protein 3",
+            "result": "IC50",
+            "operator": "=",
+            "value": 28.4,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161628,
+            "target": "Bromodomain-containing protein 3",
+            "result": "Kd",
+            "operator": "=",
+            "value": 19,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046405,
+            "target": "Bromodomain-containing protein 3",
+            "result": "Kd",
+            "operator": "=",
+            "value": 46,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046395,
+            "target": "Bromodomain-containing protein 2",
+            "result": "IC50",
+            "operator": "=",
+            "value": 29.9,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161630,
+            "target": "Bromodomain-containing protein 2",
+            "result": "Kd",
+            "operator": "=",
+            "value": 52,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046404,
+            "target": "Bromodomain-containing protein 2",
+            "result": "Kd",
+            "operator": "=",
+            "value": 52,
+            "unit": "nM"
+        }
+    ]
+},
+{
+    "compound_id": 694811,
+    "smiles": "CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14",
+    "molecular_weight": 423.89538,
+    "ALogP": 3.288,
+    "molecular_formula": "C22H22ClN5O2",
+    "num_rings": 4,
+    "image": "images/694811.png",
+    "assay_results": [{
+            "result_id": 8046403,
+            "target": "Bromodomain-containing protein 4",
+            "result": "IC50",
+            "operator": "=",
+            "value": 36.1,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161672,
+            "target": "Bromodomain-containing protein 4",
+            "result": "IC50",
+            "operator": "=",
+            "value": 190,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161625,
+            "target": "Bromodomain-containing protein 4",
+            "result": "Kd",
+            "operator": "=",
+            "value": 49,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046400,
+            "target": "Bromodomain-containing protein 4",
+            "result": "Kd",
+            "operator": "=",
+            "value": 55.2,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046402,
+            "target": "Bromodomain-containing protein 3",
+            "result": "IC50",
+            "operator": "=",
+            "value": 42.4,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046399,
+            "target": "Bromodomain-containing protein 3",
+            "result": "Kd",
+            "operator": "=",
+            "value": 50.5,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161627,
+            "target": "Bromodomain-containing protein 3",
+            "result": "Kd",
+            "operator": "=",
+            "value": 89,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046401,
+            "target": "Bromodomain-containing protein 2",
+            "result": "IC50",
+            "operator": "=",
+            "value": 32.5,
+            "unit": "nM"
+        },
+        {
+            "result_id": 8046398,
+            "target": "Bromodomain-containing protein 2",
+            "result": "Kd",
+            "operator": "=",
+            "value": 61.3,
+            "unit": "nM"
+        },
+        {
+            "result_id": 12161629,
+            "target": "Bromodomain-containing protein 2",
+            "result": "Kd",
+            "operator": "=",
+            "value": 101,
+            "unit": "nM"
+        }
+    ]
+}
+]
