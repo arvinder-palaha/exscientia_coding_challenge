@@ -1,4 +1,5 @@
 import json
+import sys
 from jsonschema import validate
 from codecs import BOM_UTF8
 
@@ -35,4 +36,4 @@ def import_json(json_file, schema_file):
         return json_data
     else:
         print("Invalid JSON")
-        return 0
+        sys.exit()
